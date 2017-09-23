@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<script src="https://momentjs.com/downloads/moment.min.js"></script>
+	<script src="https://momentjs.com/downloads/moment-timezone-with-data.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
+	<script src="app.js"></script>
+	<link href="app.css" rel="stylesheet">
+<body>
+
+	<div ng-app="timeZoneApp" ng-controller="timeZoneController">
+
+		<h1>Time zone converter</h1>
+	
+		<p>Select source time zone:
+			<select ng-model="sourceTimeZone">
+				<option ng-repeat="x in timeZones" value="{{x.id}}">{{x.name}}</option>
+			</select>
+		</p>
+
+		<p>Select time:
+			<select ng-model="sourceTime">
+				<option ng-repeat="x in times" value="{{x.id}}">{{x.name}}</option>
+			</select>
+		</p>
+
+		<h3>Source time: {{formatTime(sourceTime, sourceTimeZone)}}</h3>
+
+		<p>Convert to time zone:
+			<select ng-model="destinationTimeZone">
+				<option ng-repeat="x in timeZones" value="{{x.id}}">{{x.name}}</option>
+			</select>
+		</p>
+
+		<!-- <h2>Destination time: {{formatTime(sourceTime, destinationTimeZone)}}</h2> -->
+		<h2>Converted time: {{convertTimeZone(sourceTime, sourceTimeZone, destinationTimeZone)}}</h2>
+
+	</div>
+
+</body>
+</html>
